@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:columnCount="2"
+    android:rowCount="5"
+    tools:context=".ui.RandomizeActivityFragment">
+
+    <TextView
+        android:id="@+id/type_text_view"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_type_activity_text"
+        android:layout_column="0"
+        android:layout_row="0"/>
+
+    <Spinner
+        android:id="@+id/type_spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/type_spinner_strings"
+        android:layout_row="0"
+        android:layout_column="1"/>
+    <TextView
+        android:id="@+id/accessibility_text_view"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_accessibility_text"
+        android:layout_column="0"
+        android:layout_row="1"/>
+
+    <Spinner
+        android:id="@+id/accessibility_spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/accessibility_spinner_strings"
+        android:layout_row="1"
+        android:layout_column="1"/>
+
+    <TextView
+        android:id="@+id/price_text_view"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_price_text"
+        android:layout_column="0"
+        android:layout_row="2"/>
+
+    <Spinner
+        android:id="@+id/price_spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/price_spinner_strings"
+        android:layout_row="2"
+        android:layout_column="1"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/randomize_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/randomize_button_text"
+        android:text="@string/randomize_button_text"
+        app:icon="@drawable/ic_search"
+        android:layout_marginTop="20dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center_horizontal"/>
+
+
+</GridLayout>

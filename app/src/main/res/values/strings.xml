@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">What To Do App</string>
+    <string name="randomize_button_text">RANDOMIZE ACTIVITY</string>
+
+    <!--Type spinner strings  -->
+    <string name="select_type_activity_text">Select type of activity:</string>
+    <string-array name="type_spinner_strings">
+        <item>Education</item>
+        <item>Recreational</item>
+        <item>Social</item>
+        <item>DIY</item>
+        <item>Charity</item>
+        <item>Cooking</item>
+        <item>Relaxation</item>
+        <item>Music</item>
+        <item>Busywork</item>
+    </string-array>
+
+    <!--Accessibility spinner strings  -->
+    <string name="select_accessibility_text">Select difficulty:</string>
+    <string-array name="accessibility_spinner_strings">
+        <item>Very easy</item>
+        <item>Easy</item>
+        <item>Hard</item>
+        <item>Very hard</item>
+    </string-array>
+
+    <!--Price spinner strings  -->
+    <string name="select_price_text">Select price:</string>
+    <string-array name="price_spinner_strings">
+        <item>Very cheap</item>
+        <item>Cheap</item>
+        <item>Expensive</item>
+        <item>Very expensive</item>
+    </string-array>
 </resources>
