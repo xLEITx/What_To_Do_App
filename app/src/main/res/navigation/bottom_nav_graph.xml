@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/randomizeActivityFragment">
+
+    <fragment
+        android:id="@+id/randomizeActivityFragment"
+        android:name="com.leit.whattodoapp.ui.RandomizeActivityFragment"
+        android:label="fragment_randomize_activity"
+        tools:layout="@layout/fragment_randomize_activity" />
+</navigation>

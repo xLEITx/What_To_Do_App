@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.DetailActivityFragment">
 
     <TextView
         android:id="@+id/activity_description_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="10dp"
         tools:text="Learn Express.js" />
 
     <TextView
@@ -60,8 +60,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
         tools:text="Price: cheap" />
-
-
 
 
 </LinearLayout>
