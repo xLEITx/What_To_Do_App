@@ -2,13 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.DetailActivityFragment">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.leit.whattodoapp.model.RandomizeActivityViewModel" />
-        <variable
-            name="detailActivityFragment"
-            type="com.leit.whattodoapp.ui.DetailActivityFragment" />
     </data>
 
     <LinearLayout
@@ -22,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="50dp"
+            android:text="@{viewModel.description}"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp"
@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
+            android:text="@{viewModel.type}"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
+            android:text="@{viewModel.accessibility.toString()}"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
@@ -55,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
+            android:text="@{viewModel.participants.toString()}"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
@@ -66,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
+            android:text="@{viewModel.price.toString()}"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="20sp"
