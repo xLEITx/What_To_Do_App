@@ -6,6 +6,8 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 private const val BASE_URL = "https://www.boredapi.com/api/"
@@ -20,8 +22,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ActivityApiService {
+    //@GET("activity?type=recreational&minaccessibility=0.25&maxaccessibility=0.5&minprice=0&maxprice=0.25")
     @GET("activity")
-    suspend fun getActivity(): Activity
+    suspend fun getActivity(
+        @Query("type") type:String
+    ): Activity
 }
 
 object ActivityApi {

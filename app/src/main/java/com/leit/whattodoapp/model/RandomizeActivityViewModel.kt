@@ -31,12 +31,12 @@ class RandomizeActivityViewModel : ViewModel() {
 
 
     init {
-        getActivity()
+        getActivity("recreational")
     }
 
-    private fun getActivity() {
+    fun getActivity(type:String) {
         viewModelScope.launch {
-            val activity: Activity = ActivityApi.retrofitService.getActivity()
+            val activity: Activity = ActivityApi.retrofitService.getActivity(type)
             _description.value = activity.activity
             _type.value = activity.type
             _participants.value = activity.participants
@@ -48,5 +48,6 @@ class RandomizeActivityViewModel : ViewModel() {
 
         }
     }
+
 
 }
