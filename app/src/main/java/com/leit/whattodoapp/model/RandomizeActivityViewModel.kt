@@ -1,5 +1,6 @@
 package com.leit.whattodoapp.model
 
+import android.accessibilityservice.AccessibilityService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,12 +32,21 @@ class RandomizeActivityViewModel : ViewModel() {
 
 
     init {
-        getActivity("recreational")
+        getRandomActivity()
     }
 
-    fun getActivity(type:String) {
+    fun getActivity(type:String, difficult: String, price: String) {
+
+        //TODO:Error handling if activity not found
+        
         viewModelScope.launch {
-            val activity: Activity = ActivityApi.retrofitService.getActivity(type)
+            val activity: Activity = ActivityApi.retrofitService.getActivity(
+                type,
+                getMinAccessibility(difficult).toString(),
+                getMaxAccessibility(difficult).toString(),
+                getMinPrice(price).toString(),
+                getMaxPrice(price).toString()
+            )
             _description.value = activity.activity
             _type.value = activity.type
             _participants.value = activity.participants
@@ -46,6 +56,67 @@ class RandomizeActivityViewModel : ViewModel() {
             _accessibility.value = activity.accessibility
 
 
+        }
+    }
+    private fun getRandomActivity(){
+        viewModelScope.launch {
+            val activity: Activity = ActivityApi.retrofitService.getRandomActivity()
+            _description.value = activity.activity
+            _type.value = activity.type
+            _participants.value = activity.participants
+            _price.value = activity.price
+            _link.value = activity.link
+            _key.value = activity.key
+            _accessibility.value = activity.accessibility
+
+        }
+    }
+
+    private fun getMinAccessibility(difficult: String):Double{
+        return if (difficult.lowercase() == "very easy" ){
+            0.0
+        } else if (difficult.lowercase() == "easy"){
+            0.25
+        } else if (difficult.lowercase() == "hard"){
+            0.5
+        } else{
+            0.75
+        }
+    }
+
+    private fun getMaxAccessibility(difficult: String):Double{
+        return if (difficult.lowercase() == "very easy" ){
+            0.25
+        } else if (difficult.lowercase() == "easy"){
+            0.5
+        } else if (difficult.lowercase() == "hard"){
+            0.75
+        } else{
+            1.0
+        }
+    }
+
+    private fun getMinPrice(price: String):Double{
+        return if (price.lowercase() == "very cheap" ){
+            0.0
+        } else if (price.lowercase() == "cheap"){
+            0.25
+        } else if (price.lowercase() == "expensive"){
+            0.5
+        } else{
+            0.75
+        }
+    }
+
+    private fun getMaxPrice(price: String):Double{
+        return if (price.lowercase() == "very cheap" ){
+            0.25
+        } else if (price.lowercase() == "cheap"){
+            0.5
+        } else if (price.lowercase() == "expensive"){
+            0.75
+        } else{
+            1.0
         }
     }
 

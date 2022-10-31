@@ -22,11 +22,17 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ActivityApiService {
-    //@GET("activity?type=recreational&minaccessibility=0.25&maxaccessibility=0.5&minprice=0&maxprice=0.25")
     @GET("activity")
     suspend fun getActivity(
-        @Query("type") type:String
+        @Query("type") type:String,
+        @Query("minaccessibility") minAccessibility:String,
+        @Query("maxaccessibility") maxAccessibility:String,
+        @Query("minprice") minPrice:String,
+        @Query("maxprice") maxPrice:String
     ): Activity
+
+    @GET("activity")
+    suspend fun getRandomActivity():Activity
 }
 
 object ActivityApi {

@@ -35,7 +35,13 @@ class RandomizeActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.randomizeButton.setOnClickListener { viewModel.getActivity(binding.typeSpinner.selectedItem.toString().lowercase()) }
+        binding.randomizeButton.setOnClickListener {
+            viewModel.getActivity(
+                binding.typeSpinner.selectedItem.toString().lowercase(),
+                binding.accessibilitySpinner.selectedItem.toString(),
+                binding.priceSpinner.selectedItem.toString()
+            )
+        }
 
     }
 
