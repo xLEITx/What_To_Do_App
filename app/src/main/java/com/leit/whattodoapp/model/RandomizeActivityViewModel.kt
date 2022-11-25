@@ -1,6 +1,5 @@
 package com.leit.whattodoapp.model
 
-import android.accessibilityservice.AccessibilityService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,8 +37,9 @@ class RandomizeActivityViewModel : ViewModel() {
     fun getActivity(type:String, difficult: String, price: String) {
 
         //TODO:Error handling if activity not found
-        
+
         viewModelScope.launch {
+
             val activity: Activity = ActivityApi.retrofitService.getActivity(
                 type,
                 getMinAccessibility(difficult).toString(),
@@ -47,13 +47,18 @@ class RandomizeActivityViewModel : ViewModel() {
                 getMinPrice(price).toString(),
                 getMaxPrice(price).toString()
             )
-            _description.value = activity.activity
-            _type.value = activity.type
-            _participants.value = activity.participants
-            _price.value = activity.price
-            _link.value = activity.link
-            _key.value = activity.key
-            _accessibility.value = activity.accessibility
+            if(activity.error == "") {
+                _description.value = activity.activity
+                _type.value = activity.type
+                _participants.value = activity.participants
+                _price.value = activity.price
+                _link.value = activity.link
+                _key.value = activity.key
+                _accessibility.value = activity.accessibility
+            }
+            else{
+                _description.value = activity.error
+            }
 
 
         }
