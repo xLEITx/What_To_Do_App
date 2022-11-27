@@ -41,8 +41,11 @@ class RandomizeActivityFragment : Fragment() {
                 binding.accessibilitySpinner.selectedItem.toString(),
                 binding.priceSpinner.selectedItem.toString()
             )
+
+
         }
 
     }
+
 
 }

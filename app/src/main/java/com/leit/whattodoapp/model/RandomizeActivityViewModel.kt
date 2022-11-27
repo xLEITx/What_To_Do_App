@@ -7,7 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.leit.whattodoapp.network.Activity
 import kotlinx.coroutines.launch
 
+enum class Status{SUCCESS,LOADING,ERROR}
+
 class RandomizeActivityViewModel : ViewModel() {
+
+    private val _status = MutableLiveData<Status>(Status.SUCCESS)
+    val status: LiveData<Status> = _status
+
     private val _description = MutableLiveData<String>("Learn how to play a new sport")
     val description: LiveData<String> = _description
 
@@ -36,10 +42,10 @@ class RandomizeActivityViewModel : ViewModel() {
 
     fun getActivity(type:String, difficult: String, price: String) {
 
-        //TODO:Error handling if activity not found
 
         viewModelScope.launch {
 
+            _status.value = Status.LOADING
             val activity: Activity = ActivityApi.retrofitService.getActivity(
                 type,
                 getMinAccessibility(difficult).toString(),
@@ -48,6 +54,7 @@ class RandomizeActivityViewModel : ViewModel() {
                 getMaxPrice(price).toString()
             )
             if(activity.error == "") {
+                _status.value = Status.SUCCESS
                 _description.value = activity.activity
                 _type.value = activity.type
                 _participants.value = activity.participants
@@ -55,8 +62,10 @@ class RandomizeActivityViewModel : ViewModel() {
                 _link.value = activity.link
                 _key.value = activity.key
                 _accessibility.value = activity.accessibility
+
             }
             else{
+                _status.value = Status.ERROR
                 _description.value = activity.error
             }
 
