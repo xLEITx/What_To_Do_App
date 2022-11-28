@@ -3,6 +3,7 @@ package com.leit.whattodoapp.ui
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.leit.whattodoapp.R
 import com.leit.whattodoapp.model.Status
 
 @BindingAdapter("status")
@@ -17,7 +18,7 @@ fun bindStatus(textView:TextView, status: Status){
         }
 
         Status.LOADING ->{
-            textView.visibility = View.INVISIBLE
+            textView.text = textView.context.getString(R.string.loading)
         }
     }
 
