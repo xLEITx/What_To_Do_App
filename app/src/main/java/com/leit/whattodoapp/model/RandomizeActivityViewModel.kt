@@ -46,15 +46,40 @@ class RandomizeActivityViewModel : ViewModel() {
         viewModelScope.launch {
 
             _status.value = Status.LOADING
-            val activity: Activity = ActivityApi.retrofitService.getActivity(
-                type,
-                getMinAccessibility(difficult).toString(),
-                getMaxAccessibility(difficult).toString(),
-                getMinPrice(price).toString(),
-                getMaxPrice(price).toString()
-            )
-            if(activity.error == "") {
-                _status.value = Status.SUCCESS
+            try {
+                val activity: Activity = ActivityApi.retrofitService.getActivity(
+                    type,
+                    getMinAccessibility(difficult).toString(),
+                    getMaxAccessibility(difficult).toString(),
+                    getMinPrice(price).toString(),
+                    getMaxPrice(price).toString()
+                )
+                if (activity.error == "") {
+                    _description.value = activity.activity
+                    _type.value = activity.type
+                    _participants.value = activity.participants
+                    _price.value = activity.price
+                    _link.value = activity.link
+                    _key.value = activity.key
+                    _accessibility.value = activity.accessibility
+                    _status.value = Status.SUCCESS
+
+                } else {
+                    _status.value = Status.ERROR
+                    _description.value = activity.error
+                }
+
+            }catch (e: Exception){
+                _status.value = Status.ERROR
+                _description.value = "No internet connection"
+            }
+        }
+    }
+    private fun getRandomActivity(){
+        viewModelScope.launch {
+            _status.value = Status.LOADING
+            try {
+                val activity: Activity = ActivityApi.retrofitService.getRandomActivity()
                 _description.value = activity.activity
                 _type.value = activity.type
                 _participants.value = activity.participants
@@ -62,26 +87,11 @@ class RandomizeActivityViewModel : ViewModel() {
                 _link.value = activity.link
                 _key.value = activity.key
                 _accessibility.value = activity.accessibility
-
-            }
-            else{
+                _status.value = Status.SUCCESS
+            }catch (e:Exception){
                 _status.value = Status.ERROR
-                _description.value = activity.error
+                _description.value = "No internet connection"
             }
-
-
-        }
-    }
-    private fun getRandomActivity(){
-        viewModelScope.launch {
-            val activity: Activity = ActivityApi.retrofitService.getRandomActivity()
-            _description.value = activity.activity
-            _type.value = activity.type
-            _participants.value = activity.participants
-            _price.value = activity.price
-            _link.value = activity.link
-            _key.value = activity.key
-            _accessibility.value = activity.accessibility
 
         }
     }
