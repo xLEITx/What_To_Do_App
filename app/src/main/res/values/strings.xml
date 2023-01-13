@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">What To Do App</string>
     <string name="randomize_button_text">RANDOMIZE ACTIVITY</string>
+    <string name="add_button_text">ADD IN LIST</string>
     <string name="loading">Loading…</string>
 
     <!--Type spinner strings  -->

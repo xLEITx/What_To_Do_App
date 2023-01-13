@@ -165,6 +165,19 @@
             android:contentDescription="@string/randomize_button_text"
             android:text="@string/randomize_button_text"
             app:icon="@drawable/ic_search" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_in_list_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="55dp"
+            android:contentDescription="@string/add_button_text"
+            android:text="@string/add_button_text"
+            app:icon="@drawable/ic_add" />
 
 
     </GridLayout>
