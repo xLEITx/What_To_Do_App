@@ -38,6 +38,7 @@ android {
 
 dependencies {
 
+    def room_version = "2.5.0"
     def nav_version = "2.5.3"
     def lifecycle_version = "2.5.1"
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -58,6 +59,10 @@ dependencies {
     // Coil
     implementation "io.coil-kt:coil:1.1.1"
     implementation 'androidx.leanback:leanback:1.0.0'
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     testImplementation 'junit:junit:4.+'
