@@ -1,5 +1,6 @@
 package com.leit.whattodoapp.ui
 
+import android.graphics.Color
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -41,4 +42,14 @@ fun bindButtonStatus(button: Button, status: Status){
         }
     }
 
+}
+
+@BindingAdapter("link")
+fun bindLink(textView: TextView, link: String){
+    if (link == ""){
+        textView.setTextColor(Color.WHITE)
+    }
+    else{
+        textView.setTextColor(Color.BLUE)
+    }
 }

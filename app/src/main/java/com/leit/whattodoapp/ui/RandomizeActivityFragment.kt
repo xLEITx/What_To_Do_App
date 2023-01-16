@@ -1,5 +1,7 @@
 package com.leit.whattodoapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +52,14 @@ class RandomizeActivityFragment : Fragment() {
 
         }
         binding.addInListButton.setOnClickListener { viewModel.addNewActivity() }
+
+        binding.activityDescriptionTextView.setOnClickListener {
+            if (viewModel.link.value != ""){
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.link.value))
+                startActivity(browserIntent)
+            }
+
+        }
 
     }
 

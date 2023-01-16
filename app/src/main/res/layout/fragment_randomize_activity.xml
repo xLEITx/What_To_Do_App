@@ -23,6 +23,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp"
+            app:link = "@{viewModel.link}"
             tools:text="Learn Express.js" />
 
         <TextView

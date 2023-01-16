@@ -25,7 +25,7 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
     private val _price = MutableLiveData(0.1)
     val price: LiveData<Double> = _price
 
-    private val _link = MutableLiveData<String>()
+    private val _link = MutableLiveData("")
     val link: LiveData<String> = _link
 
     private val _accessibility = MutableLiveData(0.2)
