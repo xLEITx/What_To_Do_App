@@ -28,9 +28,6 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
     private val _link = MutableLiveData<String>()
     val link: LiveData<String> = _link
 
-    private val _key = MutableLiveData<Long>()
-    val key: LiveData<Long> = _key
-
     private val _accessibility = MutableLiveData<Double>(0.2)
     val accessibility: LiveData<Double> = _accessibility
 
@@ -71,7 +68,6 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
                     _participants.value = activity.participants
                     _price.value = activity.price
                     _link.value = activity.link
-                    _key.value = activity.key
                     _accessibility.value = activity.accessibility
                     _status.value = Status.SUCCESS
 
@@ -96,7 +92,6 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
                 _participants.value = activity.participants
                 _price.value = activity.price
                 _link.value = activity.link
-                _key.value = activity.key
                 _accessibility.value = activity.accessibility
                 _status.value = Status.SUCCESS
             }catch (e:Exception){
