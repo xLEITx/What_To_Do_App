@@ -1,15 +1,13 @@
 package com.leit.whattodoapp.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.leit.whattodoapp.data.ActivityDao
 import com.leit.whattodoapp.network.Activity
 import kotlinx.coroutines.launch
 
 enum class Status{SUCCESS,LOADING,ERROR}
 
-class RandomizeActivityViewModel : ViewModel() {
+class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewModel() {
 
     private val _status = MutableLiveData<Status>(Status.SUCCESS)
     val status: LiveData<Status> = _status
@@ -26,6 +24,7 @@ class RandomizeActivityViewModel : ViewModel() {
     private val _price = MutableLiveData<Double>(0.1)
     val price: LiveData<Double> = _price
 
+    //TODO: decide will u use link and key parameters or not
     private val _link = MutableLiveData<String>()
     val link: LiveData<String> = _link
 
@@ -38,6 +37,18 @@ class RandomizeActivityViewModel : ViewModel() {
 
     init {
         getRandomActivity()
+    }
+
+    fun addNewActivity(){
+        val newActivity = getNewActivityEntryForDb(
+            description.value!!,
+            type.value!!,
+            participants.value!!,
+            price.value!!,
+            link.value!!,
+            accessibility.value!!
+        )
+        insertActivity(newActivity)
     }
 
     fun getActivity(type:String, difficult: String, price: String) {
@@ -96,6 +107,30 @@ class RandomizeActivityViewModel : ViewModel() {
         }
     }
 
+    private fun insertActivity(activity: com.leit.whattodoapp.data.Activity){
+        viewModelScope.launch {
+            activityDao.insert(activity)
+        }
+    }
+
+    private fun getNewActivityEntryForDb(
+        activityDescription:String,
+        type: String,
+        participants:Int,
+        price: Double,
+        link:String,
+        accessibility: Double ): com.leit.whattodoapp.data.Activity {
+
+        return com.leit.whattodoapp.data.Activity(
+            activity = activityDescription,
+            type = type,
+            participants = participants,
+            price = price,
+            link = link,
+            accessibility = accessibility)
+
+    }
+
     private fun getMinAccessibility(difficult: String):Double{
         return if (difficult.lowercase() == "very easy" ){
             0.0
@@ -144,5 +179,16 @@ class RandomizeActivityViewModel : ViewModel() {
         }
     }
 
+    class RandomizeActivityViewModelFactory(private val activityDao: ActivityDao) :ViewModelProvider.Factory{
+
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if(modelClass.isAssignableFrom(RandomizeActivityViewModel::class.java)){
+                @Suppress("UNCHECKED_CAST")
+                return RandomizeActivityViewModel(activityDao) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+
+    }
 
 }

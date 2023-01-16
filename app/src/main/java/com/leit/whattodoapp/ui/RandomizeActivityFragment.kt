@@ -8,12 +8,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.leit.whattodoapp.R
+import com.leit.whattodoapp.WhatToDoApplication
 import com.leit.whattodoapp.databinding.FragmentRandomizeActivityBinding
 import com.leit.whattodoapp.model.RandomizeActivityViewModel
 
 
 class RandomizeActivityFragment : Fragment() {
-    private val viewModel: RandomizeActivityViewModel by activityViewModels()
+    private val viewModel: RandomizeActivityViewModel by activityViewModels{
+        RandomizeActivityViewModel.RandomizeActivityViewModelFactory(
+            (activity?.application as WhatToDoApplication).database.activityDao()
+        )
+    }
 
     private lateinit var binding: FragmentRandomizeActivityBinding
 
@@ -44,6 +49,7 @@ class RandomizeActivityFragment : Fragment() {
 
 
         }
+        binding.addInListButton.setOnClickListener { viewModel.addNewActivity() }
 
     }
 
