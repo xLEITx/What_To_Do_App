@@ -3,32 +3,32 @@ package com.leit.whattodoapp.model
 import androidx.lifecycle.*
 import com.leit.whattodoapp.data.ActivityDao
 import com.leit.whattodoapp.network.Activity
+import com.leit.whattodoapp.network.ActivityApi
 import kotlinx.coroutines.launch
 
 enum class Status{SUCCESS,LOADING,ERROR}
 
 class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewModel() {
 
-    private val _status = MutableLiveData<Status>(Status.SUCCESS)
+    private val _status = MutableLiveData(Status.SUCCESS)
     val status: LiveData<Status> = _status
 
-    private val _description = MutableLiveData<String>("Learn how to play a new sport")
+    private val _description = MutableLiveData("Learn how to play a new sport")
     val description: LiveData<String> = _description
 
-    private val _type = MutableLiveData<String>("recreational")
+    private val _type = MutableLiveData("recreational")
     val type: LiveData<String> = _type
 
-    private val _participants = MutableLiveData<Int>(1)
+    private val _participants = MutableLiveData(1)
     val participants: LiveData<Int> = _participants
 
-    private val _price = MutableLiveData<Double>(0.1)
+    private val _price = MutableLiveData(0.1)
     val price: LiveData<Double> = _price
 
-    //TODO: decide will u use link and key parameters or not
     private val _link = MutableLiveData<String>()
     val link: LiveData<String> = _link
 
-    private val _accessibility = MutableLiveData<Double>(0.2)
+    private val _accessibility = MutableLiveData(0.2)
     val accessibility: LiveData<Double> = _accessibility
 
 
