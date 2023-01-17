@@ -10,4 +10,8 @@
         android:name="com.leit.whattodoapp.ui.RandomizeActivityFragment"
         android:label="fragment_randomize_activity"
         tools:layout="@layout/fragment_randomize_activity" />
+    <fragment
+        android:id="@+id/listActivityFragment"
+        android:name="com.leit.whattodoapp.ui.ListActivityFragment"
+        android:label="ListActivityFragment" />
 </navigation>
