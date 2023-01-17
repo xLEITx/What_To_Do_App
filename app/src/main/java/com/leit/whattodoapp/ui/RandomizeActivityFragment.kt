@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -51,7 +52,10 @@ class RandomizeActivityFragment : Fragment() {
 
 
         }
-        binding.addInListButton.setOnClickListener { viewModel.addNewActivity() }
+        binding.addInListButton.setOnClickListener {
+            viewModel.addNewActivity()
+            Toast.makeText(context,R.string.db_add_toast_text, Toast.LENGTH_SHORT).show()
+        }
 
         binding.activityDescriptionTextView.setOnClickListener {
             if (viewModel.link.value != ""){

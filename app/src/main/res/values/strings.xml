@@ -3,6 +3,7 @@
     <string name="randomize_button_text">RANDOMIZE ACTIVITY</string>
     <string name="add_button_text">ADD IN LIST</string>
     <string name="loading">Loading…</string>
+    <string name="db_add_toast_text">The activity is added to the list</string>
 
     <!--Type spinner strings  -->
     <string name="select_type_activity_text">Select type of activity:</string>
