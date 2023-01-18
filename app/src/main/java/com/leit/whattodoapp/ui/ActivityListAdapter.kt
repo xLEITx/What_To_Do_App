@@ -26,8 +26,10 @@ class ActivityListAdapter(private val onActivityClicked:(Activity) -> Unit):
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
         val current = getItem(position)
         holder.itemView.setOnClickListener {
-
+            onActivityClicked(current)
         }
+        holder.bind(current)
+
     }
 
 

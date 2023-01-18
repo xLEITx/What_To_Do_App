@@ -7,12 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.leit.whattodoapp.R
 import com.leit.whattodoapp.WhatToDoApplication
 import com.leit.whattodoapp.databinding.FragmentListActivityBinding
 import com.leit.whattodoapp.model.RandomizeActivityViewModel
 
 class ListActivityFragment : Fragment() {
+
+
+    private val viewModel:RandomizeActivityViewModel by activityViewModels{
+        RandomizeActivityViewModel.RandomizeActivityViewModelFactory(
+            (activity?.application as WhatToDoApplication).database.activityDao()
+        )
+    }
 
 
     private lateinit var binding: FragmentListActivityBinding
@@ -33,7 +41,18 @@ class ListActivityFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        val adapter = ActivityListAdapter{}
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.recyclerView.adapter = adapter
+
+        viewModel.allActivities.observe(this.viewLifecycleOwner){
+            items ->
+            items.let {
+                adapter.submitList(it)
+            }
+        }
     }
 
 }

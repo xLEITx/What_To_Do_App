@@ -31,6 +31,7 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
     private val _accessibility = MutableLiveData(0.2)
     val accessibility: LiveData<Double> = _accessibility
 
+    val allActivities:LiveData<List<com.leit.whattodoapp.data.Activity>> = activityDao.getActivities().asLiveData()
 
     init {
         getRandomActivity()
