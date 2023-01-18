@@ -17,7 +17,7 @@ class ActivityListAdapter(private val onActivityClicked:(Activity) -> Unit):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         return ActivityViewHolder(
             ActivityItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context), parent, false
             )
 
         )
