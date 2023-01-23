@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/randomizeActivityFragment"
+        android:title="@string/menu_randomize_text"
+        android:icon="@drawable/ic_search"/>
+
+    <item android:id="@+id/listActivityFragment"
+        android:title="@string/menu_list_text"
+        android:icon="@drawable/ic_list_fragment"/>
+
+
+</menu>

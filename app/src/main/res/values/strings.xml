@@ -4,6 +4,8 @@
     <string name="add_button_text">ADD IN LIST</string>
     <string name="loading">Loading…</string>
     <string name="db_add_toast_text">The activity is added to the list</string>
+    <string name="menu_randomize_text">Randomize</string>
+    <string name="menu_list_text">List</string>
 
     <!--Type spinner strings  -->
     <string name="select_type_activity_text">Select type of activity:</string>
