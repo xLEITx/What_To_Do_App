@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leit.whattodoapp.R
 import com.leit.whattodoapp.WhatToDoApplication
@@ -43,7 +44,10 @@ class ListActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        val adapter = ActivityListAdapter{}
+        val adapter = ActivityListAdapter{
+            val action = ListActivityFragmentDirections.actionListActivityFragmentToDetailActivityFragment(it.id)
+            this.findNavController().navigate(action)
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 

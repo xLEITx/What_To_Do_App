@@ -17,9 +17,23 @@
     <fragment
         android:id="@+id/listActivityFragment"
         android:name="com.leit.whattodoapp.ui.ListActivityFragment"
-        android:label="ListActivityFragment" >
+        android:label="ListActivityFragment"
+        tools:layout="@layout/fragment_list_activity">
         <action
             android:id="@+id/action_listActivityFragment_to_randomizeActivityFragment"
             app:destination="@id/randomizeActivityFragment" />
+        <action
+            android:id="@+id/action_listActivityFragment_to_detailActivityFragment"
+            app:destination="@id/detailActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailActivityFragment"
+        android:name="com.leit.whattodoapp.ui.DetailActivityFragment"
+        android:label="DetailActivityFragment"
+        tools:layout="@layout/fragment_detail_activity">
+        <argument
+            android:name="item_id"
+            app:argType="integer" />
+
     </fragment>
 </navigation>
