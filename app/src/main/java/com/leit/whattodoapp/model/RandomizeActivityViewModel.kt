@@ -37,6 +37,10 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
         getRandomActivity()
     }
 
+    fun retrieveActivity(id:Int):LiveData<com.leit.whattodoapp.data.Activity>{
+        return activityDao.getActivity(id).asLiveData()
+    }
+
     fun addNewActivity(){
         val newActivity = getNewActivityEntryForDb(
             description.value!!,
