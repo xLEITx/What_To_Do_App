@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.leit.whattodoapp.R
 import com.leit.whattodoapp.WhatToDoApplication
@@ -51,6 +52,10 @@ class DetailActivityFragment : Fragment() {
             activityItem = selectedItem
             bind(activityItem)
 
+        }
+        binding.deleteButton.setOnClickListener {
+            viewModel.deleteActivity(activityItem)
+            this.findNavController().navigateUp()
         }
 
     }

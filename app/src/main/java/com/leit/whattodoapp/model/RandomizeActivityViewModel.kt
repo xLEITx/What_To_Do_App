@@ -37,6 +37,12 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
         getRandomActivity()
     }
 
+    fun deleteActivity(activity: com.leit.whattodoapp.data.Activity){
+        viewModelScope.launch {
+            activityDao.deleteActivity(activity)
+        }
+    }
+
     fun retrieveActivity(id:Int):LiveData<com.leit.whattodoapp.data.Activity>{
         return activityDao.getActivity(id).asLiveData()
     }

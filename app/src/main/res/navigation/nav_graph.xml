@@ -34,6 +34,9 @@
         <argument
             android:name="item_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailActivityFragment_to_listActivityFragment"
+            app:destination="@id/listActivityFragment" />
 
     </fragment>
 </navigation>
