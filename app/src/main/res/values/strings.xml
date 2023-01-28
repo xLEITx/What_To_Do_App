@@ -11,6 +11,7 @@
     <string name="accessibility_activity_text">Accessibility: %s</string>
     <string name="participants_activity_text">Participants: %s</string>
     <string name="price_activity_text">Price: %s</string>
+    <string name="browser_button">OPEN LINK</string>
 
     <!--Type spinner strings  -->
     <string name="select_type_activity_text">Select type of activity:</string>

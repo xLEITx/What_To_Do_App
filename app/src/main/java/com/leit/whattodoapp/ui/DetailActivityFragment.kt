@@ -1,6 +1,8 @@
 package com.leit.whattodoapp.ui
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +23,7 @@ class DetailActivityFragment : Fragment() {
 
     private lateinit var activityItem:Activity
     private lateinit var binding:FragmentDetailActivityBinding
-    val args: DetailActivityFragmentArgs by navArgs()
+    private val args: DetailActivityFragmentArgs by navArgs()
 
     private val viewModel: RandomizeActivityViewModel by activityViewModels {
         RandomizeActivityViewModel.RandomizeActivityViewModelFactory(
@@ -53,6 +55,13 @@ class DetailActivityFragment : Fragment() {
             bind(activityItem)
 
         }
+        binding.webButton.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(activityItem.link))
+            startActivity(browserIntent)
+
+
+        }
+
         binding.deleteButton.setOnClickListener {
             viewModel.deleteActivity(activityItem)
             this.findNavController().navigateUp()
@@ -62,10 +71,14 @@ class DetailActivityFragment : Fragment() {
 
     private fun bind(activity:Activity){
         binding.activityDescriptionTextView.text = activity.activity
-        binding.activityTypeTextView.text = activity.type
-        binding.activityAccessibilityTextView.text = activity.accessibility.toString()
-        binding.activityParticipantsTextView.text = activity.participants.toString()
-        binding.activityPriceTextView.text = activity.price.toString()
+        binding.activityTypeTextView.text = resources.getString(R.string.type_activity_text, activity.type)
+        binding.activityAccessibilityTextView.text = resources.getString(R.string.accessibility_activity_text, activity.accessibility.toString())
+        binding.activityParticipantsTextView.text = resources.getString(R.string.participants_activity_text, activity.participants.toString())
+        binding.activityPriceTextView.text = resources.getString(R.string.price_activity_text, activity.price.toString())
+        if (activity.link == ""){
+            binding.webButton.visibility = View.GONE
+        }
+
     }
 
 
