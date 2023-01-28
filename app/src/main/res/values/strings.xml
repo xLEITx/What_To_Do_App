@@ -7,6 +7,10 @@
     <string name="menu_randomize_text">Randomize</string>
     <string name="menu_list_text">List</string>
     <string name="del_button_text">Delete</string>
+    <string name="type_activity_text">Type: %s</string>
+    <string name="accessibility_activity_text">Accessibility: %s</string>
+    <string name="participants_activity_text">Participants: %s</string>
+    <string name="price_activity_text">Price: %s</string>
 
     <!--Type spinner strings  -->
     <string name="select_type_activity_text">Select type of activity:</string>
@@ -39,8 +43,7 @@
         <item>Expensive</item>
         <item>Very expensive</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
 </resources>
