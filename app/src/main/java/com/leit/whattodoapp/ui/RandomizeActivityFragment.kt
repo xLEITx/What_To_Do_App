@@ -46,8 +46,10 @@ class RandomizeActivityFragment : Fragment() {
         binding.randomizeButton.setOnClickListener {
             viewModel.getActivity(
                 binding.typeSpinner.selectedItem.toString().lowercase(),
-                binding.accessibilitySpinner.selectedItem.toString(),
-                binding.priceSpinner.selectedItem.toString()
+                binding.difficultySlider.values[0].toDouble(),
+                binding.difficultySlider.values[1].toDouble(),
+                binding.priceSlider.values[0].toDouble(),
+                binding.priceSlider.values[1].toDouble()
             )
 
 

@@ -59,7 +59,7 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
         insertActivity(newActivity)
     }
 
-    fun getActivity(type:String, difficult: String, price: String) {
+    fun getActivity(type:String, minAccessibility:Double, maxAccessibility:Double, minPrice: Double, maxPrice:Double) {
 
 
         viewModelScope.launch {
@@ -68,10 +68,10 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
             try {
                 val activity: Activity = ActivityApi.retrofitService.getActivity(
                     type,
-                    getMinAccessibility(difficult).toString(),
-                    getMaxAccessibility(difficult).toString(),
-                    getMinPrice(price).toString(),
-                    getMaxPrice(price).toString()
+                    minAccessibility.toString(),
+                    maxAccessibility.toString(),
+                    minPrice.toString(),
+                    maxPrice.toString()
                 )
                 if (activity.error == "") {
                     _description.value = activity.activity
@@ -137,53 +137,6 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
 
     }
 
-    private fun getMinAccessibility(difficult: String):Double{
-        return if (difficult.lowercase() == "very easy" ){
-            0.0
-        } else if (difficult.lowercase() == "easy"){
-            0.25
-        } else if (difficult.lowercase() == "hard"){
-            0.5
-        } else{
-            0.75
-        }
-    }
-
-    private fun getMaxAccessibility(difficult: String):Double{
-        return if (difficult.lowercase() == "very easy" ){
-            0.25
-        } else if (difficult.lowercase() == "easy"){
-            0.5
-        } else if (difficult.lowercase() == "hard"){
-            0.75
-        } else{
-            1.0
-        }
-    }
-
-    private fun getMinPrice(price: String):Double{
-        return if (price.lowercase() == "very cheap" ){
-            0.0
-        } else if (price.lowercase() == "cheap"){
-            0.25
-        } else if (price.lowercase() == "expensive"){
-            0.5
-        } else{
-            0.75
-        }
-    }
-
-    private fun getMaxPrice(price: String):Double{
-        return if (price.lowercase() == "very cheap" ){
-            0.25
-        } else if (price.lowercase() == "cheap"){
-            0.5
-        } else if (price.lowercase() == "expensive"){
-            0.75
-        } else{
-            1.0
-        }
-    }
 
     class RandomizeActivityViewModelFactory(private val activityDao: ActivityDao) :ViewModelProvider.Factory{
 
