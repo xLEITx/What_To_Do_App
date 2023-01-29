@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -45,7 +46,7 @@ class RandomizeActivityFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.randomizeButton.setOnClickListener {
             viewModel.getActivity(
-                binding.typeSpinner.selectedItem.toString().lowercase(),
+                binding.autoCompleteTextView.text.toString().lowercase(),
                 binding.difficultySlider.values[0].toDouble(),
                 binding.difficultySlider.values[1].toDouble(),
                 binding.priceSlider.values[0].toDouble(),
@@ -67,6 +68,13 @@ class RandomizeActivityFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val types = resources.getStringArray(R.array.type_spinner_strings)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, types)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
     }
 
 
