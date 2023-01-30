@@ -102,13 +102,33 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:text="@string/select_type_activity_text" />
 
-        <Spinner
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"
+            android:layout_width="200dp"
+            app:startIconDrawable="@drawable/ic_dropdown"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complete_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_weight="1"
+                android:text="@string/default_dropdown_text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+       <!-- <Spinner
             android:id="@+id/type_spinner"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:entries="@array/type_spinner_strings"
-            android:minHeight="48dp" />
+            android:minHeight="48dp" /> -->
 
         <TextView
             android:id="@+id/accessibility_text_view"
