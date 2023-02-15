@@ -1,6 +1,7 @@
 package com.leit.whattodoapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,7 @@ class ListActivityFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_list_activity,
@@ -55,8 +56,18 @@ class ListActivityFragment : Fragment() {
             items ->
             items.let {
                 adapter.submitList(it)
+
             }
+            if (items.isEmpty()){
+                binding.emptyListTextView.visibility = View.VISIBLE
+            }else{
+                binding.emptyListTextView.visibility = View.GONE
+            }
+            Log.v("LIST_FRAGMENT", items.count().toString())
         }
+        binding.recyclerView.adapter
     }
+
+
 
 }
