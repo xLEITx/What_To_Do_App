@@ -72,9 +72,9 @@ class DetailActivityFragment : Fragment() {
     private fun bind(activity:Activity){
         binding.activityDescriptionTextView.text = activity.activity
         binding.activityTypeTextView.text = resources.getString(R.string.type_activity_text, activity.type)
-        binding.activityAccessibilityTextView.text = resources.getString(R.string.accessibility_activity_text, activity.accessibility.toString())
+        binding.activityAccessibilityTextView.text = resources.getString(R.string.accessibility_activity_text, viewModel.getFormattedValues(activity.accessibility))
         binding.activityParticipantsTextView.text = resources.getString(R.string.participants_activity_text, activity.participants.toString())
-        binding.activityPriceTextView.text = resources.getString(R.string.price_activity_text, activity.price.toString())
+        binding.activityPriceTextView.text = resources.getString(R.string.price_activity_text, viewModel.getFormattedValues(activity.price))
         if (activity.link == ""){
             binding.webButton.visibility = View.GONE
         }

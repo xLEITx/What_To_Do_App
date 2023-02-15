@@ -93,6 +93,10 @@ class RandomizeActivityViewModel(private val activityDao: ActivityDao) : ViewMod
             }
         }
     }
+    fun getFormattedValues(value: Double):String{
+        return (value * 100).toInt().toString()
+    }
+
     private fun getRandomActivity(){
         viewModelScope.launch {
             _status.value = Status.LOADING
